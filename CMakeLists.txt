@@ -2,13 +2,12 @@ cmake_minimum_required(VERSION 3.22)
 
 project(mdpack LANGUAGES CXX VERSION 0.0.1)
 
-find_package(fmt CONFIG REQUIRED)
-# target_link_libraries(main PRIVATE fmt::fmt)
+set(CMAKE_CXX_STANDARD 17)
 
-find_package(Catch2 CONFIG REQUIRED)
-add_executable(tests "test/test.cpp")
-target_link_libraries(tests PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
+set(INSTALL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+set(INSTALL_BIN_DIR ${PROJECT_SOURCE_DIR}/bin)
+set(INSTALL_LIB_DIR ${PROJECT_SOURCE_DIR}/lib)
 
-include(CTest)
-include(Catch)
-catch_discover_tests(tests)
+add_subdirectory(src)
+add_subdirectory(test)
